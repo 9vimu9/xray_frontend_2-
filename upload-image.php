@@ -37,8 +37,12 @@ try {
           {
             $sourcePath = $_FILES["file"]["tmp_name"];
             $targetPath = $destination_directory . $_FILES["file"]["name"];
-            move_uploaded_file($sourcePath, $targetPath);
-            die(realpath($targetPath));
+            $fileMove =  move_uploaded_file($sourcePath, $targetPath);
+            
+            if($fileMove != true)
+            {
+              echo "<div class=\"alert alert-danger\" role=\"alert\">Error: File from  <strong>" . $sourcePath . "</strong> to ".targetPath." move failed.</div>";
+            }
 
             echo "<div class=\"alert alert-success\" role=\"alert\">";
             echo "<p>Image uploaded successful</p>";
