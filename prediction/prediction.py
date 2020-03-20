@@ -9,8 +9,8 @@ try:
 
 
     TEST_IMAGE_PATH = sys.argv[1]
-    MODEL_PATH = "model_pretrain.h5"
-    IMG_SIZE = 64
+    MODEL_PATH = sys.argv[2]
+    IMG_SIZE = 250
     LABELS = ['BACTERIA','NORMAL','VIRUS']
 
     new_model = tf.keras.models.load_model(MODEL_PATH)
@@ -40,6 +40,4 @@ try:
     # print(img.shape)
 
 except Exception as e:
-    import os
-    print(os.getegid())
     print(os.getegid()+' Failed to open file: %s' % (e,))
