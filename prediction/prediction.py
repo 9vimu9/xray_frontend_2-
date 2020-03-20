@@ -40,4 +40,6 @@ try:
     # print(img.shape)
 
 except Exception as e:
-    print('Failed to open file: %s' % (e,))
+    import os
+    print(os.getegid())
+    print(os.getegid()+' Failed to open file: %s' % (e,))
