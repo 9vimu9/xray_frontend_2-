@@ -68,7 +68,7 @@ try {
                 echo "<div class=\"alert alert-success\" role=\"alert\">";
               }
               // echo "<p>File Name: <a href=\"". $targetPath . "\"><strong>" . $targetPath . "</strong></a></p>";
-              echo "<h3>".$condition."</h3>";
+              echo "<h3 style='margin-top: 0px;margin-bottom: 0px;'>".$condition."</h3>";
               echo "<p> $precentage % </p>";
               // echo "<p>Temp file: <strong>" . $_FILES["file"]["tmp_name"] . "</strong></p>";
               echo "</div>";

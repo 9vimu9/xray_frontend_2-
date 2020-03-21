@@ -12,7 +12,7 @@ function selectImage(e) {
   $('#file').css("color", "green");
   $('#image-preview-div').css("display", "block");
   $('#preview-img').attr('src', e.target.result);
-  $('#preview-img').css('max-width', '550px');
+  $('#preview-img').css('max-width', '350px');
 }
 
 $(document).ready(function (e) {
