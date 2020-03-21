@@ -45,6 +45,11 @@ try {
             }
             else
             {
+              $command ="python3 /var/www/html/xray1/prediction/prediction.py /var/www/html/xray1/".$targetPath." /var/www/html/xray1/prediction/oH1Rl.h5";
+              $result = null;
+              exec($command,$result);
+              echo $result;
+
               echo "<div class=\"alert alert-success\" role=\"alert\">";
               echo "<p>Image uploaded successful</p>";
               echo "<p>File Name: <a href=\"". $targetPath . "\"><strong>" . $targetPath . "</strong></a></p>";
