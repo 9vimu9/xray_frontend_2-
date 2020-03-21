@@ -2,7 +2,7 @@
 session_start();
 
 $scriptPath = "/var/www/html/xray1/prediction/prediction.py";
-$modelPath =  "/var/www/html/xray1/prediction/oH1Rl.h5";
+$modelPath =  "/var/www/html/xray1/prediction/model.h5";
 $storageDir = "/var/www/html/xray1";
 
 
