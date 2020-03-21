@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+$scriptPath = "/var/www/html/xray1/prediction/prediction.py";
+$modelPath =  "/var/www/html/xray1/prediction/oH1Rl.h5";
+
 
 
 define(BR, "<br/>");
@@ -45,10 +48,13 @@ try {
             }
             else
             {
-              $command ="python3 /var/www/html/xray1/prediction/prediction.py /var/www/html/xray1/".$targetPath." /var/www/html/xray1/prediction/oH1Rl.h5";
+              $command ="python3 ".$scriptPath." /var/www/html/xray1/".$targetPath." ".$modelPath;
               $result = null;
               exec($command,$result);
               var_dump($result);
+              $classLabelString = $result[0];
+              $precentages = $result[1];
+              // array(2) { [0]=> string(31) "['BACTERIA', 'NORMAL', 'VIRUS']" [1]=> string(34) "[0.67382556 0.20724042 0.00542949]" }
 
               echo "<div class=\"alert alert-success\" role=\"alert\">";
               echo "<p>Image uploaded successful</p>";

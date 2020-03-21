@@ -6,6 +6,7 @@ try:
     import os
     import numpy as np 
     import sys
+    import json
 
 
     TEST_IMAGE_PATH = sys.argv[1]
@@ -32,8 +33,8 @@ try:
     result = new_model.predict(img)
     maxValue = result.argmax()
     values = result.flatten()
-    print(LABELS)
-    print(values)
+    print(json.dumps(LABELS))
+    print(json.dumps(values))
 
     #print(result)
     # print(img.shape)
