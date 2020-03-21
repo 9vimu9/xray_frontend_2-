@@ -33,6 +33,7 @@ try:
     maxValue = result.argmax()
     values = result.flatten()
     print(LABELS[maxValue])
+    print(values[maxValue]*100)
 
     #print(result)
     # print(img.shape)

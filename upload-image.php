@@ -55,7 +55,7 @@ try {
               $condition = $result[0];
               // array(2) { [0]=> string(31) "['BACTERIA', 'NORMAL', 'VIRUS']" [1]=> string(34) "[0.67382556 0.20724042 0.00542949]" }
 
-              if(condition!=="NORMAL")
+              if($condition!=="NORMAL")
               {
                 echo "<div class=\"alert alert-danger\" role=\"alert\">";
               }
