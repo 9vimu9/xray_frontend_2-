@@ -32,12 +32,10 @@ try:
     result = new_model.predict(img)
     maxValue = result.argmax()
     values = result.flatten()
-    print(LABELS)
-    print(values)
+    print(LABELS[maxValue])
 
     #print(result)
     # print(img.shape)
 
 except Exception as e:
     print(os.getegid()+' Failed to open file: %s' % (e,))
-    
