@@ -12,7 +12,7 @@ try {
 
   if ( isset($_FILES["file"]["type"]) )
   {
-    $max_size = 500 * 1024; // 500 KB
+    $max_size = 10000 * 1024; // 10 MB
     $destination_directory = "upload/";
     $validextensions = array("jpeg", "jpg", "png");
 
@@ -33,14 +33,16 @@ try {
         }
         else
         {
-          if ( file_exists($destination_directory . $_FILES["file"]["name"]) )
-          {
-            echo "<div class=\"alert alert-danger\" role=\"alert\">Error: File <strong>" . $_FILES["file"]["name"] . "</strong> already exists.</div>";
-          }
-          else
+          //if ( file_exists($destination_directory . $_FILES["file"]["name"]) )
+          //{
+           // echo "<div class=\"alert alert-danger\" role=\"alert\">Error: File <strong>" . $_FILES["file"]["name"] . "</strong> already exists.</div>";
+         // }
+          //else
           {
             $sourcePath = $_FILES["file"]["tmp_name"];
-            $targetPath = $destination_directory . $_FILES["file"]["name"];
+	    $bytes = random_bytes(10);
+	    $random = bin2hex($bytes);
+            $targetPath = $destination_directory .$random. $_FILES["file"]["name"];
             $fileMove =  move_uploaded_file($sourcePath, $targetPath);
 
             if($fileMove != true)
@@ -49,11 +51,13 @@ try {
             }
             else
             {
+
               $command ="python3 ".$scriptPath." ".$storageDir."/".$targetPath." ".$modelPath;
               $result = null;
               exec($command,$result);
               $condition = $result[0];
-              // array(2) { [0]=> string(31) "['BACTERIA', 'NORMAL', 'VIRUS']" [1]=> string(34) "[0.67382556 0.20724042 0.00542949]" }
+              $precentage = $result[1];
+	      unlink($storageDir."/".$targetPath);
 
               if($condition!=="NORMAL")
               {
@@ -63,10 +67,9 @@ try {
               {
                 echo "<div class=\"alert alert-success\" role=\"alert\">";
               }
-              echo "<p>Image uploaded successful</p>";
               // echo "<p>File Name: <a href=\"". $targetPath . "\"><strong>" . $targetPath . "</strong></a></p>";
               echo "<h3>".$condition."</h3>";
-              // echo "<p>Size: <strong>" . round($_FILES["file"]["size"]/1024, 2) . " kB</strong></p>";
+              echo "<p> $precentage % </p>";
               // echo "<p>Temp file: <strong>" . $_FILES["file"]["tmp_name"] . "</strong></p>";
               echo "</div>";
             }
