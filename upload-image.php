@@ -57,7 +57,7 @@ try {
               exec($command,$result);
               $condition = $result[0];
               $precentage = $result[1];
-	      unlink($storageDir."/".$targetPath);
+	            unlink($storageDir."/".$targetPath);
 
               if($condition!=="NORMAL")
               {
@@ -92,6 +92,5 @@ catch(Exception $ex) {
     die("caught exception: ". $ex->getMessage());
 
 }
-echo "Keep on going!. ..." . BR;
 
 ?>
