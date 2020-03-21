@@ -32,9 +32,8 @@ try:
     result = new_model.predict(img)
     maxValue = result.argmax()
     values = result.flatten()
+    print(LABELS)
     print(values)
-    print(maxValue)
-    print(LABELS[maxValue])
 
     #print(result)
     # print(img.shape)
