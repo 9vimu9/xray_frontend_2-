@@ -52,17 +52,22 @@ try {
               $command ="python3 ".$scriptPath." ".$storageDir."/".$targetPath." ".$modelPath;
               $result = null;
               exec($command,$result);
-              var_dump($result);
-              $classLabelString = $result[0];
-              $precentages = $result[1];
+              $condition = $result[0];
               // array(2) { [0]=> string(31) "['BACTERIA', 'NORMAL', 'VIRUS']" [1]=> string(34) "[0.67382556 0.20724042 0.00542949]" }
 
-              echo "<div class=\"alert alert-success\" role=\"alert\">";
+              if(condition!=="NORMAL")
+              {
+                echo "<div class=\"alert alert-danger\" role=\"alert\">";
+              }
+              else
+              {
+                echo "<div class=\"alert alert-success\" role=\"alert\">";
+              }
               echo "<p>Image uploaded successful</p>";
-              echo "<p>File Name: <a href=\"". $targetPath . "\"><strong>" . $targetPath . "</strong></a></p>";
-              echo "<p>Type: <strong>" . $_FILES["file"]["type"] . "</strong></p>";
-              echo "<p>Size: <strong>" . round($_FILES["file"]["size"]/1024, 2) . " kB</strong></p>";
-              echo "<p>Temp file: <strong>" . $_FILES["file"]["tmp_name"] . "</strong></p>";
+              // echo "<p>File Name: <a href=\"". $targetPath . "\"><strong>" . $targetPath . "</strong></a></p>";
+              echo "<h3>".$condition."</h3>";
+              // echo "<p>Size: <strong>" . round($_FILES["file"]["size"]/1024, 2) . " kB</strong></p>";
+              // echo "<p>Temp file: <strong>" . $_FILES["file"]["tmp_name"] . "</strong></p>";
               echo "</div>";
             }
           }
