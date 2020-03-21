@@ -3,6 +3,7 @@ session_start();
 
 $scriptPath = "/var/www/html/xray1/prediction/prediction.py";
 $modelPath =  "/var/www/html/xray1/prediction/oH1Rl.h5";
+$storageDir = "/var/www/html/xray1";
 
 
 
@@ -48,7 +49,7 @@ try {
             }
             else
             {
-              $command ="python3 ".$scriptPath." /var/www/html/xray1/".$targetPath." ".$modelPath;
+              $command ="python3 ".$scriptPath." ".$storageDir."/".$targetPath." ".$modelPath;
               $result = null;
               exec($command,$result);
               var_dump($result);
