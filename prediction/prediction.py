@@ -10,7 +10,7 @@ try:
 
     TEST_IMAGE_PATH = sys.argv[1]
     MODEL_PATH = sys.argv[2]
-    IMG_SIZE = 64
+    IMG_SIZE = 224
     LABELS = ['BACTERIA','NORMAL','VIRUS']
 
     new_model = tf.keras.models.load_model(MODEL_PATH)
